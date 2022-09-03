@@ -1,9 +1,9 @@
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from './tasks-reducer';
-import {TasksStateType} from '../App';
+import {addTaskAC, removeTaskAC, tasksReducer, TasksStateType } from '../features/TodolistsList/tasks-reducer';
 import {addTodolistAC, removeTodolistAC} from './todolists-reducer';
+import {changeTaskStatusAC, changeTaskTitleAC} from './tasks-reducer';
 
-let startState: TasksStateType = {};
-beforeEach(() => {
+let startState:TasksStateType = {};
+/*beforeEach(() => {
     startState = {
         "todolistId1": [
             { id: "1", title: "CSS", isDone: false },
@@ -16,10 +16,10 @@ beforeEach(() => {
             { id: "3", title: "tea", isDone: false }
         ]
     };
-});
+});*/
 
 test('correct task should be deleted from correct array', () => {
-    const action = removeTaskAC("2", "todolistId2");
+    const action = removeTaskAC({taskId: '2', todolistId: 'todolistId2'});
 
     const endState = tasksReducer(startState, action)
 
